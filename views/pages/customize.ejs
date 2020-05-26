@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('../partials/head'); -%>
+</head> 
+
+<body>
+<header>
+   <%- include('../partials/header'); -%>
+</header>
+<div>
+
+
+
+<main>
+    <div class="container" style="margin-top:50px;">
+
+	  <div class="row">
+	  	<div class="col-sm-2">
+	    </div>
+	    <div class="col-sm-8">
+	      <div class="list-group">
+			  <div class="list-group-item flex-column align-items-start" style="background-color:#a0a0ac;">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h2 class="mb-1"><i class="fas fa-cogs"></i>  Customize News Agencies</h2>
+			    </div>
+			  </div>
+
+				<form id="form" method="POST" action="retrieveCustomized">				  
+		          <div class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <input type="checkbox" style="margin-top: 5px;" value="BBC"><h5 class="mb-1" style="margin-right: 620px; margin-bottom: 95px;">BBC</h5></input>
+				    </div>  
+			  	  </div>
+
+			  	  <div class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <input type="checkbox" style="margin-top: 5px;" value="Times of India"><h5 class="mb-1" style="margin-right: 530px; margin-bottom: 95px;">Times Of India</h5></input>
+				    </div>  
+			  	  </div>
+
+			  	  <div class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <input type="checkbox" style="margin-top: 5px;" value="Hindustan Times"><h5 class="mb-1" style="margin-right: 505px; margin-bottom: 95px;">Hindustan Times</h5></input>
+				    </div>  
+			  	  </div>
+
+			  	  <div class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <input type="checkbox" style="margin-top: 5px;" value="NDTV"><h5 class="mb-1" style="margin-right: 600px; margin-bottom: 95px;">NDTV</h5></input>
+				    </div>  
+			  	  </div>
+			  	  <input type="hidden" id="hid" name="agencies" value="hello!">
+
+			  	  <button type="button" class="btn btn-secondary btn-lg" onclick="getValue()" style="margin-top: 20px; margin-left: 225px;"><i class="fas fa-download"></i>  Retrieve Customized Feeds</button>
+			  	</form>
+			  	
+		     
+			</div>
+	    </div>
+
+	    <div class="col-sm-2">
+	    </div>
+	    
+	  </div>
+	</div>
+</main>
+
+
+
+</div>
+
+
+<script type="text/javascript">
+
+	function getValue(){
+		var array = []
+		var checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+
+		console.log(checkboxes.length)
+		for (var i = 0; i < checkboxes.length; i++) {
+		  array.push(checkboxes[i].value)
+		}
+		console.log(array);
+		document.getElementById("hid").value = array;
+		var form=document.getElementById("form");
+		form.submit();
+		/*
+		$.post("/retrieveCustomized",
+		  {
+		    agencies: array
+		  });*/
+		  /*
+		$.ajax({
+		  type: "POST",
+		  url: "retrieveCustomized",
+		  data: {
+		  	agencies: array,
+		  }
+		});
+
+		//$.get("retrieveCustomized", {agencies: array});*/
+	}
+
+</script>
+</body>
+</html>

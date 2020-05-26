@@ -1,24 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
+	<%- include('../partials/head'); -%>
 </head> 
 
-<body class="container">
+<body>
+<header>
+   <%- include('../partials/header'); -%>
+</header>
+<div>
+
 
 
 <main>
-    <div class="jumbotron">
-        <h1>This is great</h1>
-        <p>Welcome to templating using EJS</p>
-        <% for(var i = 0 ; i < arr.length ; i++) { %>
-       <tr>
-            <td><%= arr[i] %></td>
-       </tr>
-<% } %>
-    </div>
+    <div class="container" style="margin-top:50px;">
+
+	  <div class="row">
+	    <div class="col">
+	      <div class="list-group">
+			  <div class="list-group-item flex-column align-items-start" style="background-color:#c1f1e9;">
+			    <div class="d-flex w-100 justify-content-between" >
+			      <h2 class="mb-1"><i class="fas fa-poo-storm"></i>  Top</h2>
+			    </div>
+			  </div>
+
+
+			  <% topFeeds.forEach(function(feed) { %>
+		          <a href="<%= feed.link %>" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1" ><%= feed.title %></h5>
+				      
+				    </div>
+				    <p class="mb-1"><%= feed.description %></p>
+				    
+			  	  </a>
+		      <% }); %>
+
+			</div>
+	    </div>
+	    
+	    <div class="col">
+	      <div class="list-group">
+			  <div class="list-group-item flex-column align-items-start" style="background-color:#b7cdb1;">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h2 class="mb-1"><i class="fas fa-globe"></i>   World</h2>
+			    </div>
+			  </div>
+
+
+			  <% worldFeeds.forEach(function(feed) { %>
+		          <a href="<%= feed.link %>" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1"><%= feed.title %></h5>
+				      
+				    </div>
+				    <p class="mb-1"><%= feed.description %></p>
+				    
+			  	  </a>
+		      <% }); %>
+
+			</div>
+	    </div>
+	  </div>
+	</div>
+	<div style="margin-top:25px; margin-left:25px; margin-right:25px;">
+	  <div class="row justify-content-md-center" style="margin-top:50px;">
+	    <div class="col">
+	      <div class="list-group">
+			  <div class="list-group-item flex-column align-items-start" style="background-color:#b0c6cf;">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h2 class="mb-1"><i class="fas fa-basketball-ball"></i>  Sports</h2>
+			    </div>
+			  </div>
+
+
+			  <% sportsFeeds.forEach(function(feed) { %>
+		          <a href="<%= feed.link %>" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1"><%= feed.title %></h5>
+				      
+				    </div>
+				    <p class="mb-1"><%= feed.description %></p>
+				    
+			  	  </a>
+		      <% }); %>
+
+			</div>
+	    </div>
+	    
+	    <div class="col">
+	      <div class="list-group">
+			  <div class="list-group-item flex-column align-items-start" style="background-color:#eec4d2;">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h2 class="mb-1"><i class="fas fa-business-time"></i>  Business</h2>
+			    </div>
+			  </div>
+
+
+			  <% businessFeeds.forEach(function(feed) { %>
+		          <a href="<%= feed.link %>" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1"><%= feed.title %></h5>
+				      
+				    </div>
+				    <p class="mb-1"><%= feed.description %></p>
+				    
+			  	  </a>
+		      <% }); %>
+
+			</div>
+	    </div>
+	    
+	    <div class="col">
+	      <div class="list-group">
+			  <div class="list-group-item flex-column align-items-start" style="background-color:#aa95e9;">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h2 class="mb-1"><i class="fas fa-video"></i>  Entertainment</h2>
+			    </div>
+			  </div>
+
+
+			  <% entertainmentFeeds.forEach(function(feed) { %>
+		          <a href="<%= feed.link %>" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1"><%= feed.title %></h5>
+				      
+				    </div>
+				    <p class="mb-1"><%= feed.description %></p>
+				    
+			  	  </a>
+		      <% }); %>
+
+			</div>
+	    </div>
+	  </div>
+
+	</div>
 </main>
 
 
+
+</div>
+
+<footer>
+    <%- include('../partials/footer'); -%>
+</footer>
 </body>
 </html>

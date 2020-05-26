@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('../partials/head'); -%>
+</head> 
+
+<body>
+<header>
+   <%- include('../partials/header'); -%>
+</header>
+<div>
+
+
+
+<main>
+    <div class="container" style="margin-top:50px;">
+
+	  <div class="row">
+	    <div class="col">
+	      <div class="list-group">
+			  <div class="list-group-item flex-column align-items-start" style="background-color:#fae3b7;">
+			    <div class="d-flex w-100 justify-content-between">
+			      <h2 class="mb-1"><i class="fas fa-search"></i>  Search Results</h2>
+			    </div>
+			  </div>
+
+
+			  <% searchFeeds.forEach(function(feed) { %>
+		          <a href="<%= feed.link %>" class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1"><%= feed.title %></h5>
+				      
+				    </div>
+				    <p class="mb-1"><%= feed.description %></p>
+				    
+			  	  </a>
+		      <% }); %>
+
+			</div>
+	    </div>
+	    
+	  </div>
+	</div>
+</main>
+
+
+
+</div>
+
+<footer>
+    <%- include('../partials/footer'); -%>
+</footer>
+</body>
+</html>

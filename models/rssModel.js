@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var mongoosastic = require('mongoosastic');
 
 var rssSchema = mongoose.Schema({
 	title: {
@@ -26,4 +27,18 @@ var rssSchema = mongoose.Schema({
 	}
 });
 
-module.exports = mongoose.model('Rss', rssSchema);
+rssSchema.plugin(mongoosastic, {
+    "host": "localhost",
+    "port": 9200
+});
+
+var rssModel = mongoose.model('Rss', rssSchema);
+
+rssModel.createMapping((err, mapping) => {
+	if (err){
+		console.log("error in mapping");
+	}else{
+	    console.log('mapping created');
+	}
+});
+module.exports = rssModel;
