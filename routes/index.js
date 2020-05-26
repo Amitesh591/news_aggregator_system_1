@@ -8,26 +8,6 @@ let date = new Date();
 let daysToDeletion = 1;
 let deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
 
-/*
-router.get('/save', (req, res) => {
-	let feed = new rssModel({
-		title: "imp title",
-		description: "desc",
-		category: "sports",
-		source: "bbc"
-	});
-
-	feed.save(function(err, doc){
-		if (err){
-			console.log("ERROR!!!");
-     		console.error(err)
-		}else{
-			console.log("I AM INSIDE");
-     		console.log(doc)
-		}
-	});
-});*/
-
 //cron.schedule('*/2 * * * *', cronJob);
 
 
@@ -137,20 +117,6 @@ function getFeedsFromDB(cat){
 /* GET home page. */
 router.get('/', async function(req, res, next) {
 
-	/*
-	rssModel.find({'category': 'Top'}).sort('-created_on').limit(10).exec(function(err, feeds){
-
-		if (err){
-			console.log("ERROR!!!");
-		}
-
-		console.log(feeds);
-	    res.render('pages/index', {
-	    	topFeeds: feeds
-	    });    
-	    
-	});*/
-
 	let topFeeds = await getFeedsFromDB('Top');
 	let worldFeeds = await getFeedsFromDB('World');
 	let sportsFeeds = await getFeedsFromDB('Sports');
@@ -194,7 +160,6 @@ router.post('/search', async function(req, res){
 	console.log(query);
 
 	let searchFeeds = await getFeedsFromES(query);
-	//res.send(searchFeeds);
 
 	res.render('pages/search', {
 	    searchFeeds: searchFeeds
@@ -227,22 +192,6 @@ function getCustomizedFeedsFromDB(cat, agencies){
 
 router.post('/retrieveCustomized', async function(req, res){
 
-	//const obj = JSON.parse(JSON.stringify(req.));
-	//console.log("body: ", obj);
-	//res.send({"msg": "got it"});
-
-
-
-
-	/*	
-	res.render('pages/index.ejs', {
-	    topFeeds: [],
-	    worldFeeds: [],
-	    sportsFeeds: [],
-	    businessFeeds: [],
-	    entertainmentFeeds: []
-	}); */
-	
 	const obj = JSON.parse(JSON.stringify(req.body));
 	console.log("body: ", obj);
 	let agencies_string = obj['agencies'];
